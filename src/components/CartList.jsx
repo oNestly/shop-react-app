@@ -1,7 +1,13 @@
 import { CartItem } from './CartItem';
 
 function CartList(props) {
-	const { order =[], handleCartShow = Function.prototype } = props;
+	const { 
+		order =[], 
+		handleCartShow = Function.prototype,
+		removeFromCart = Function.prototype,
+		incrQuantity = Function.prototype,
+		decrQuantity = Function.prototype,
+	} = props;
 
 	const totalPrice = order.reduce((sum, el) => {
 		return (
@@ -17,10 +23,20 @@ function CartList(props) {
 			</li>
 			{
 				order.length ? order.map((item, index) => (
-					<CartItem key={index} {...item}/>
+					<CartItem 
+						key={index} 
+						removeFromCart={removeFromCart}
+						incrQuantity={incrQuantity}
+						decrQuantity={decrQuantity}
+						{...item}/>
 				)) : <li className="collection-item">Корзина пуста</li>
 			}
-			<li className="collection-item active">Общая стоимость: {totalPrice} руб.</li>
+			<li className="collection-item active">
+				Общая стоимость: {totalPrice} руб.
+			</li>
+			<li className="collection-item active">
+				<button className="btn">Оформить</button>
+			</li>
 			
 		</ul>
 	)
