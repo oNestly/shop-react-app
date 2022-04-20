@@ -15,7 +15,6 @@ function Shop() {
 
 	const addToCart = (item) => {
 		const itemIndex = order.findIndex(orderItem => orderItem.id === item.id);
-		
 
 		if (itemIndex < 0) {
 			const newItem = {
@@ -81,7 +80,7 @@ function Shop() {
 	};
 
 	const closeAlert = () => {
-		setAlertName('')
+		setAlertName('');
 	};
 
 	useEffect(function getGoods() {
