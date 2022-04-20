@@ -1,13 +1,19 @@
+import { useContext } from 'react';
+import { ShopContext } from '../context';
+
 function CartItem(props) {
 	const {
 		id,
 		name,
 		price,
 		quantity,
-		removeFromCart = Function.prototype,
-		incrQuantity = Function.prototype,
-		decrQuantity = Function.prototype,
 	} = props;
+
+	const {
+		removeFromCart,
+		incrQuantity,
+		decrQuantity,
+	} = useContext(ShopContext);
 
 	const checkNullQuantity = (id) => {
 		if (quantity > 1) {
